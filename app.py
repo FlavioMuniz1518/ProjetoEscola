@@ -39,7 +39,7 @@ def login():
         print(password)
  
         # Verifique se a conta existe usando o Postgree
-        cursor.execute('SELECT * FROM users WHERE username = %s', [username])
+        cursor.execute('SELECT * FROM users WHERE username = %s', ['username'])
         # Buscar um registro e retornar o resultado
         account = cursor.fetchone()
  
