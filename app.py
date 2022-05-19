@@ -78,7 +78,7 @@ def register():
         _hashed_password = generate_password_hash(password)
  
         #Verifique se a conta existe usando Postgree
-        cursor.execute('SELECT * FROM users WHERE username = %s', (username,))
+        cursor.execute('SELECT * FROM users WHERE username = %s', ['username'])
         account = cursor.fetchone()
         print(account)
         # Se a conta existir, mostre as verificações de erro e validação
