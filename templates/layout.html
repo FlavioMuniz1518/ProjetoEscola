@@ -18,6 +18,16 @@
   <a class="py-2 d-none d-md-inline-block" href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> Sair</a>
    </div>
     </nav>
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+      </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+      new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
    
  <div class="container-fluid">
       <div class="row">
@@ -26,34 +36,29 @@
             <ul class="nav flex-column">
               <li class="nav-item">
                 <a class="nav-link active" href="#">
-                  <i class="fas fa-home"></i>
-                  Menu1 <span class="sr-only">(current)</span>
+                  
+                  LINKS RÁPIDOS <span class="sr-only">(current)</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <i class="fas fa-home"></i>
-                  Menu2
+                <a class="nav-link" href="https://www.educacao.sp.gov.br/">
+                  <i class="fa fa-chevron-right "></i>
+                  Secretaria Estadual da Educação - SP
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
-    <i class="fas fa-home"></i>
-                  Menu3
+                <a class="nav-link" href="https://www.educacaorc.com.br/">
+    <i class="fa fa-chevron-right"></i>
+                 Secretaria Municipal da Educação -RC
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <i class="fas fa-home"></i>
-                  Menu4
+                <a class="nav-link" href="https://www.rioclaro.sp.gov.br/">
+                  <i class="fa fa-chevron-right"></i>
+                Prefeitura de Rio Claro-SP
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <i class="fas fa-home"></i>
-                  Menu5
-                </a>
-              </li>
+             
             </ul>
    </div>
         </nav>

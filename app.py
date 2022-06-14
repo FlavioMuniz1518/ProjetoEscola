@@ -18,7 +18,42 @@ DB_PASS = "04170f56eac3e66bc92566c4e2d4a76312092033d0cb10ac45ce7992579477e2"
 conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
 
 
-@app.route('/')
+
+
+
+@app.route("/")
+def indexx():
+    return render_template("indexx.html")
+
+
+@app.route("/index.html")
+def index():
+    return render_template("index.html")
+
+@app.route("/tutorials.html")
+def sobre():
+    return render_template("tutorials.html")
+
+
+@app.route("/testimonials.html")
+def funcional():
+    return render_template("testimonials.html")
+
+@app.route("/blog.html")
+def parceiro():
+    return render_template("blog.html")
+
+@app.route("/contact.html")
+def contato():
+    return render_template("contact.html")
+
+@app.route("/about.html")
+def equipe():
+    return render_template("about.html")
+
+
+
+@app.route('/home')
 def home():
     # Verifique se o usuário está logado
     if 'loggedin' in session:
@@ -39,7 +74,7 @@ def login():
         print(password)
  
         # Verifique se a conta existe usando o Postgree
-        cursor.execute('SELECT * FROM users WHERE username = %s', ['username'])
+        cursor.execute('SELECT * FROM users WHERE username = %s', [username])
         # Buscar um registro e retornar o resultado
         account = cursor.fetchone()
  
@@ -78,7 +113,7 @@ def register():
         _hashed_password = generate_password_hash(password)
  
         #Verifique se a conta existe usando Postgree
-        cursor.execute('SELECT * FROM users WHERE username = %s', ['username'])
+        cursor.execute('SELECT * FROM users WHERE username = %s', [username])
         account = cursor.fetchone()
         print(account)
         # Se a conta existir, mostre as verificações de erro e validação
@@ -145,8 +180,8 @@ def tabelaoption():
     return redirect(url_for('login'))
 
 
-@app.route('/index')
-def index(): 
+@app.route('/indexy')
+def indexy(): 
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
    
     # Verifique se o usuário está logado
@@ -159,7 +194,7 @@ def index():
         cur.execute(s) # Execute the SQL
         list_users = cur.fetchall()
         # Mostrar a página de perfil com informações da conta
-        return render_template('index.html', account=account, list_users = list_users)
+        return render_template('indexy.html', account=account, list_users = list_users)
     # O usuário não está logado redirecionar para a página de login
     return redirect(url_for('login'))
 
@@ -236,7 +271,7 @@ def update_student(id):
         """, (livre, usuario, departamento, nomel, nomeresponsavel,parentesco, descricao , id))
         flash('Registro Atualizado com sucesso')
         conn.commit()
-        return redirect(url_for('index'))
+        return redirect(url_for('indexy'))
 
 @app.route('/edit2/<id>', methods = ['POST', 'GET'])
 def get_employee2(id):
@@ -266,7 +301,7 @@ def update_student2(id):
         """, (parentesco, id))
         flash('Registro Atualizado com sucesso')
         conn.commit()
-        return redirect(url_for('index'))
+        return redirect(url_for('indexy'))
  
 @app.route('/delete/<string:id>', methods = ['POST','GET'])
 def delete_student(id):
@@ -275,7 +310,7 @@ def delete_student(id):
     cur.execute('DELETE FROM students WHERE id = {0}'.format(id))
     conn.commit()
     flash('Registro deletado com Sucesso')
-    return redirect(url_for('index'))
+    return redirect(url_for('indexy'))
  
 if __name__ == "__main__":
     app.run(debug=True)
